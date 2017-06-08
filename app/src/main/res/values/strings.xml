@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">RetrofitExample</string>
+    <string name="msg_network_error">Network error</string>
+    <string name="textview_select_country">Select your country</string>
+    <string name="textview_log_in">Log in</string>
+    <string name="please_login_to_your_ticketbox_account">Please login to your Ticketbox account.</string>
+
+</resources>
