@@ -1,79 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_event"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.mypc.retrofitexample.actvity.EventActivity">
 
     <LinearLayout
+        android:layout_width="250dp"
+        android:id="@+id/loDrawerRight"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/greenTextView"
+        android:orientation="vertical"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="145dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/imgAvatarUserEvent"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="61dp"
+            android:src="@drawable/iconmenu"
+            app:civ_border_color="@color/whiteLight"
+            app:civ_border_width="3dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvFullNameUserEvent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:textColor="@color/whiteLight"
+        android:textSize="20sp"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:id="@+id/tvEmailUserEvent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/green_light_text"
+        android:textSize="13sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="72dp"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:srcCompat="@drawable/userguide" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="17dp"
+            android:text="Help Center"
+            android:textColor="@color/whiteLight"
+            android:textSize="20sp"
+            android:textStyle="normal|bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="22dp"
+        android:orientation="vertical"
+        android:weightSum="10">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="5">
 
-            <ImageView
-                android:id="@+id/imgMenu"
-                android:layout_width="18dp"
-                android:layout_height="12dp"
-                app:srcCompat="@drawable/iconmenu" />
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    app:srcCompat="@drawable/shapecopy" />
 
-            <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/iconsearch" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17dp"
+                    android:text="Log out"
+                    android:textColor="@color/whiteLight"
+                    android:textSize="20sp"
+                    android:textStyle="normal|bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity=""
+                android:layout_weight="5"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ticketbox_event_manager"
+                    android:textColor="@color/whiteLight"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:text="@string/ticketbox_company"
+                    android:textColor="@color/green_light_text"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+
         </LinearLayout>
     </LinearLayout>
 
-    <TabHost
-        android:id="@android:id/tabhost"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
-            <HorizontalScrollView
-                android:id="@+id/hScrollView"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fillViewport="true"
-                android:scrollbars="none">
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
-                <TabWidget
-                    android:id="@android:id/tabs"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"></TabWidget>
-            </HorizontalScrollView>
+                <ImageView
+                    android:id="@+id/imgButtonMenuEvent"
+                    android:layout_width="18dp"
+                    android:layout_height="12dp"
+                    app:srcCompat="@drawable/iconmenu" />
+            </LinearLayout>
 
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-                <android.support.v4.view.ViewPager
-                    android:id="@+id/viewPagerEvent"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </FrameLayout>
+                <ImageView
+                    android:id="@+id/imgButtonSearchEvent"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/iconsearch" />
+
+            </LinearLayout>
         </LinearLayout>
-    </TabHost>
-</LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="130dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <LinearLayout
+                android:id="@+id/loButtonPastEvent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3">
+
+                <TextView
+                    android:id="@+id/tvUpComingEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="UpComing"
+                    android:textSize="28sp"
+                    android:textStyle="normal|bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/loButtonUpComingEvent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="7">
+
+                <TextView
+                    android:id="@+id/tvPastEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Past"
+                    android:textSize="28sp"
+                    android:textStyle="normal|bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPagerEvent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</android.support.v4.widget.DrawerLayout>

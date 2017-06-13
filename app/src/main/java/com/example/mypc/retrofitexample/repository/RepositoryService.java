@@ -243,4 +243,21 @@ public class RepositoryService implements TicketboxRepository {
             }
         });
     }
+
+    @Override
+    public void resetPassword(Context context, String email) {
+        ClientApi clientApi = new ClientApi();
+        Call<ResponseBody> callResetPassword = clientApi.getTicketBoxService().resetPassword(getHeaders(context),email,"1");
+        callResetPassword.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+    }
 }

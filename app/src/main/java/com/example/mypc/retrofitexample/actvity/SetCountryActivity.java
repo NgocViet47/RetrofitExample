@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.mypc.retrofitexample.R;
@@ -13,6 +14,7 @@ import com.example.mypc.retrofitexample.sharedpreference.SharedPreference;
 public class SetCountryActivity extends AppCompatActivity implements View.OnClickListener {
 
     private LinearLayout loVietNam,loThaiLan,loSingapore;
+    private ImageView imgSetCounTryExit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,12 +27,14 @@ public class SetCountryActivity extends AppCompatActivity implements View.OnClic
         loVietNam = (LinearLayout) findViewById(R.id.loVietNam);
         loThaiLan = (LinearLayout) findViewById(R.id.loThaiLan);
         loSingapore = (LinearLayout) findViewById(R.id.loSingapore);
+        imgSetCounTryExit = (ImageView) findViewById(R.id.imgSetCountryExit);
     }
 
     private void setEvent() {
         loVietNam.setOnClickListener(this);
         loThaiLan.setOnClickListener(this);
         loSingapore.setOnClickListener(this);
+        imgSetCounTryExit.setOnClickListener(this);
     }
 
     @Override
@@ -45,8 +49,15 @@ public class SetCountryActivity extends AppCompatActivity implements View.OnClic
             case R.id.loSingapore:
                 loSetSingaporeButton();
                 break;
+            case R.id.imgSetCountryExit:
+                imgSetCounTryExitButton();
+                break;
         }
 
+    }
+
+    private void imgSetCounTryExitButton() {
+        finishAffinity();
     }
 
     private void loSetSingaporeButton() {

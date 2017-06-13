@@ -29,6 +29,12 @@ public interface TicketBoxService {
                                  @Field("time_zone") String timeZone,
                                  @Field("last_sync_time") String lastSyncTime);
 
+    @FormUrlEncoded
+    @POST(ConstantApi.FORGOT_PASSWORD)
+    Call<ResponseBody> resetPassword(@HeaderMap Map<String,String> headers,
+                                     @Field("email") String userName,
+                                     @Field("site_type") String site_type);
+
     @GET(ConstantApi.TICKET_STATUS)
     Call<ResponseBody> getStatusTicketbox(@HeaderMap Map<String,String> headers);
 

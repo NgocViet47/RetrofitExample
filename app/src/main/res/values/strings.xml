@@ -4,5 +4,9 @@
     <string name="textview_select_country">Select your country</string>
     <string name="textview_log_in">Log in</string>
     <string name="please_login_to_your_ticketbox_account">Please login to your Ticketbox account.</string>
+    <string name="ticketbox_company">TICKETBOX COMPANY LIMITED
+Ticketbox Co. Ltd. © 2016
+Version 2.0</string>
+    <string name="ticketbox_event_manager">Ticketbox Event Manager.</string>
 
 </resources>

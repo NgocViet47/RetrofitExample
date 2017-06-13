@@ -19,4 +19,7 @@ public class UserManager {
     public static  String getLastSyncTime(Context context){
         return SharedPreference.getString(SharedPreference.KEY_LAST_SYNC_TIME,context);
     }
+    public static User getUser(Context context){
+        return RealmUser.getUser(context);
+    }
 }

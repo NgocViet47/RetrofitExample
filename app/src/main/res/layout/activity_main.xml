@@ -10,7 +10,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imgLoginBack"
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_marginTop="10dp"
@@ -65,6 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="20">
+
                 <EditText
                     android:id="@+id/edtEmail"
                     android:layout_width="match_parent"
@@ -112,7 +113,7 @@
                     android:hint="Password"
                     android:inputType="textPassword"
                     android:layout_gravity="center"
-                    android:text="ngocviet123" />
+                    android:text="146123636329355449354575" />
             </LinearLayout>
 
         </LinearLayout>
@@ -179,6 +180,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/tvForgotPassword"
             android:layout_gravity="bottom"
             android:text="Forgot password?"
             android:textColor="@color/colorTextViewBlack"

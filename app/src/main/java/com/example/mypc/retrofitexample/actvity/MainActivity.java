@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.mypc.retrofitexample.R;
 import com.example.mypc.retrofitexample.model.User;
@@ -16,10 +18,13 @@ import com.example.mypc.retrofitexample.repository.TicketboxRepository;
 import com.example.mypc.retrofitexample.sharedpreference.GetTimeToMilliSecond;
 import com.example.mypc.retrofitexample.sharedpreference.SharedPreference;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText edtEmail,edtPassword;
+    private EditText edtEmail, edtPassword;
     private Button btnLogin;
+    private ImageView imgLoginBack;
+    private TextView tvForgotPassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,30 +32,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         initialView();
         addEvent();
-        checkLogged();
     }
 
-    private void checkLogged() {
-
-    }
 
     private void addEvent() {
         btnLogin.setOnClickListener(this);
+        tvForgotPassword.setOnClickListener(this);
+        imgLoginBack.setOnClickListener(this);
     }
 
     private void initialView() {
         edtEmail = (EditText) findViewById(R.id.edtEmail);
         edtPassword = (EditText) findViewById(R.id.edtPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
+        tvForgotPassword = (TextView) findViewById(R.id.tvForgotPassword);
+        imgLoginBack = (ImageView) findViewById(R.id.imgLoginBack);
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btnLogin:
                 btnLoginButton();
                 break;
+            case R.id.tvForgotPassword:
+                tvForgotPasswordButton();
+                break;
+            case R.id.imgLoginBack:
+                imgLoginBackButton();
+                break;
         }
+    }
+
+    private void imgLoginBackButton() {
+        finish();
+    }
+
+    private void tvForgotPasswordButton() {
+        Intent intent = new Intent(this, ForgotActivity.class);
+        startActivity(intent);
     }
 
     private void btnLoginButton() {
@@ -58,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         repository.login(this, edtEmail.getText().toString(), edtPassword.getText().toString(), new CallBackData<User>() {
             @Override
             public void onResponseData(User user) {
-                Log.e("Log","Login Finish");
+                Log.e("Log", "Login Finish");
                 saveStartTime(user);
                 loadActivityStatus();
             }
@@ -71,23 +91,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void loadActivityStatus() {
-        Intent intent = new Intent(this,EventActivity.class);
+        Intent intent = new Intent(this, EventActivity.class);
         startActivity(intent);
     }
-    private void saveStartTime(User user){
-        Long startTime = user.getExpired_time()+ GetTimeToMilliSecond.getTimeLocal();
-        SharedPreference.saveLong(startTime,SharedPreference.KEY_START_TIME,this);
+
+    private void saveStartTime(User user) {
+        Long startTime = user.getExpired_time() + GetTimeToMilliSecond.getTimeLocal();
+        SharedPreference.saveLong(startTime, SharedPreference.KEY_START_TIME, this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-     /*   Realm realm = Realm.getInstance(getRealmConfig(this));
-        RealmResults<User> results = realm.where(User.class).findAll();
-        realm.beginTransaction();
-        results.deleteAllFromRealm();
-        realm.commitTransaction();*/
 
-        Log.e("Clear","Realm");
+        Log.e("Clear", "Realm");
     }
 }

@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="greenlight">#A0C539</color>
+    <color name="green_light_text">#DDE9C3</color>
     <color name="colorTextViewBlack">#333333</color>
     <color name="greenTextView">#669900</color>
     <color name="whiteLight">#FFFFFF</color>

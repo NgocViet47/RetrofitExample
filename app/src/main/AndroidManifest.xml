@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mypc.retrofitexample">
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -23,7 +22,8 @@
         <activity android:name=".actvity.MainActivity" />
         <activity android:name=".actvity.SetCountryActivity" />
         <activity android:name=".actvity.EventActivity" />
-        <activity android:name=".actvity.FragmentListEventActivity"></activity>
+        <activity android:name=".actvity.SearchActivity" />
+        <activity android:name=".actvity.ForgotActivity"></activity>
     </application>
 
 </manifest>

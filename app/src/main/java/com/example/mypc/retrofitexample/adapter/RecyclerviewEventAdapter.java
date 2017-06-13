@@ -5,10 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mypc.retrofitexample.R;
+import com.example.mypc.retrofitexample.filter.CustomFilter;
 import com.example.mypc.retrofitexample.model.Events;
 import com.squareup.picasso.Picasso;
 
@@ -18,16 +21,18 @@ import java.util.List;
  * Created by MyPC on 6/7/2017.
  */
 
-public class RecyclerviewEventAdapter extends RecyclerView.Adapter<RecyclerviewEventAdapter.ViewHolder> {
+public class RecyclerviewEventAdapter extends RecyclerView.Adapter<RecyclerviewEventAdapter.ViewHolder> implements Filterable {
 
-    private List<Events> contactInfoList;
+    public List<Events> contactInfoList,filterList;
     private Context mContext;
     private LayoutInflater mLayoutInflater;
     private View itemView;
+    private CustomFilter filter;
 
     public RecyclerviewEventAdapter(List<Events> contactInfoList, Context mContext) {
         this.mContext = mContext;
         this.contactInfoList = contactInfoList;
+        filterList = contactInfoList;
         mLayoutInflater = LayoutInflater.from(mContext);
     }
     @Override
@@ -54,6 +59,15 @@ public class RecyclerviewEventAdapter extends RecyclerView.Adapter<RecyclerviewE
     @Override
     public int getItemCount() {
         return (contactInfoList!=null)?contactInfoList.size():0;
+    }
+
+    @Override
+    public Filter getFilter() {
+        if(filter==null)
+        {
+            filter=new CustomFilter(filterList,this);
+        }
+        return filter;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_forgot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.mypc.retrofitexample.actvity.ForgotActivity">
+
+
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_marginLeft="16dp"
+        app:srcCompat="@drawable/iconback"
+        android:id="@+id/imgForgotPasswordBack" />
+
+    <LinearLayout
+        android:layout_marginTop="29dp"
+        android:orientation="vertical"
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+        <TextView
+            android:text="Forgot password"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorTextViewBlack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView8" />
+
+        <TextView
+            android:text="Enter your email address and we’ll send you a link to change your password."
+            android:textSize="14sp"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/textView9" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/buttonsumary">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="16dp"
+                app:srcCompat="@drawable/emailgreen"
+                android:id="@+id/imageView8"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:inputType="textEmailAddress"
+                android:ems="10"
+                android:id="@+id/edtEmailForgotPassword"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+
+        <Button
+            android:layout_marginTop="25dp"
+            android:text="Send"
+            android:textSize="16sp"
+            android:textColor="@color/whiteLight"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/btnSendEmailForgotPassword"
+            android:background="@color/greenTextView"
+            />
+    </LinearLayout>
+</LinearLayout>

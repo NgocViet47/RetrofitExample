@@ -17,4 +17,5 @@ public interface TicketboxRepository {
     void getStatusTicketBox(final  Context context, final CallBackData<ResultResponse<List<Integer>>> callBackData);
     void getStatusOrder(final  Context context, final CallBackData<ResultResponse<List<Integer>>> callBackData);
     void getEvents(final Context context, String timeZone, String timeSync, CallBackData<ResultResponse<ResponseEventData>> callBackData);
+    void resetPassword(final Context context,String email);
 }

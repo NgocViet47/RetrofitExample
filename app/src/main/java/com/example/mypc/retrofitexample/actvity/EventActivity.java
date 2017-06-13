@@ -1,73 +1,80 @@
 package com.example.mypc.retrofitexample.actvity;
 
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
-import android.widget.TabHost;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.mypc.retrofitexample.R;
 import com.example.mypc.retrofitexample.adapter.MyFragmentPagerAdapter;
 import com.example.mypc.retrofitexample.fragment.FragmentPast;
 import com.example.mypc.retrofitexample.fragment.FragmentUpcoming;
+import com.example.mypc.retrofitexample.model.UserManager;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventActivity extends AppCompatActivity implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
-
-    private TabHost tabHost;
+public class EventActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
     private ViewPager viewPager;
-
-    class FakeContent implements TabHost.TabContentFactory {
-        private final Context mContext;
-
-        public FakeContent(Context context) {
-            mContext = context;
-        }
-
-        @Override
-        public View createTabContent(String tag) {
-            View v = new View(mContext);
-            v.setMinimumHeight(0);
-            v.setMinimumWidth(0);
-            return v;
-        }
-    }
+    private TextView tvUpComing, tvPast, tvFullNam, tvEmail;
+    private LinearLayout loButtonUpComing, loButtonPast;
+    private ImageView imgButtonMenu, imgButtonSearch, imgAvatar;
+    private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
-
-        initializeTabHost(savedInstanceState);
         initialView();
+        loadInfoUser();
+        setColorTextviewFirt();
+        setEvent();
 
     }
 
-    private void initializeTabHost(Bundle savedInstanceState) {
-        tabHost = (TabHost) findViewById(android.R.id.tabhost);
-        tabHost.setup();
+    private void loadInfoUser() {
+        tvFullNam.setText(UserManager.getUser(this).getFirst_name()+" "+UserManager.getUser(this).getLast_name());
+        tvEmail.setText(UserManager.getUser(this).getEmail());
+        Picasso.with(this).load(UserManager.getUser(this).getAvatar())
+                .placeholder(R.color.colorPrimary)
+                .fit()
+                .centerInside()
+                .noFade()
+                .tag(this)
+                .into(imgAvatar);
+    }
 
-
-        TabHost.TabSpec tabUpcoming;
-        tabUpcoming = tabHost.newTabSpec("Upcoming");
-        tabUpcoming.setIndicator("Upcoming");
-        tabUpcoming.setContent(new FakeContent(this));
-
-        TabHost.TabSpec tabPast;
-        tabPast = tabHost.newTabSpec("Past");
-        tabPast.setIndicator("Past");
-        tabPast.setContent(new FakeContent(this));
-
-        tabHost.addTab(tabUpcoming);
-        tabHost.addTab(tabPast);
-        tabHost.setOnTabChangedListener(this);
+    private void setEvent() {
+        loButtonUpComing.setOnClickListener(this);
+        loButtonPast.setOnClickListener(this);
+        imgButtonMenu.setOnClickListener(this);
+        imgButtonSearch.setOnClickListener(this);
     }
 
     private void initialView() {
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        imgButtonMenu = (ImageView) findViewById(R.id.imgButtonMenuEvent);
+        imgButtonSearch = (ImageView) findViewById(R.id.imgButtonSearchEvent);
+        imgAvatar = (ImageView) findViewById(R.id.imgAvatarUserEvent);
+
+        tvUpComing = (TextView) findViewById(R.id.tvUpComingEvent);
+        tvPast = (TextView) findViewById(R.id.tvPastEvent);
+        tvFullNam = (TextView) findViewById(R.id.tvFullNameUserEvent);
+        tvEmail = (TextView) findViewById(R.id.tvEmailUserEvent);
+
+        loButtonPast = (LinearLayout) findViewById(R.id.loButtonPastEvent);
+        loButtonUpComing = (LinearLayout) findViewById(R.id.loButtonUpComingEvent);
+
         viewPager = (ViewPager) findViewById(R.id.viewPagerEvent);
         List<Fragment> listFragment = new ArrayList<>();
         listFragment.add(new FragmentUpcoming());
@@ -87,7 +94,17 @@ public class EventActivity extends AppCompatActivity implements TabHost.OnTabCha
 
     @Override
     public void onPageSelected(int position) {
-        tabHost.setCurrentTab(position);
+        if (position == 0) {
+            setColorTextviewFirt();
+        } else {
+            tvUpComing.setTextColor(getResources().getColor(R.color.whiteBackground));
+            tvPast.setTextColor(getResources().getColor(R.color.colorTextViewBlack));
+        }
+    }
+
+    private void setColorTextviewFirt() {
+        tvUpComing.setTextColor(getResources().getColor(R.color.colorTextViewBlack));
+        tvPast.setTextColor(getResources().getColor(R.color.whiteBackground));
     }
 
     @Override
@@ -96,7 +113,38 @@ public class EventActivity extends AppCompatActivity implements TabHost.OnTabCha
     }
 
     @Override
-    public void onTabChanged(String tabId) {
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.loButtonPastEvent:
+                loButtonPastButton();
+                break;
+            case R.id.loButtonUpComingEvent:
+                loButtonUpComingButton();
+                break;
+            case R.id.imgButtonMenuEvent:
+                imgButtonMenuButton();
+                break;
+            case R.id.imgButtonSearchEvent:
+                imgButtonSearchButton();
+                break;
 
+        }
+    }
+
+    private void imgButtonSearchButton() {
+        Intent intent = new Intent(this,SearchActivity.class);
+        startActivity(intent);
+    }
+
+    private void imgButtonMenuButton() {
+        drawerLayout.openDrawer(Gravity.LEFT);
+    }
+
+    private void loButtonUpComingButton() {
+        viewPager.setCurrentItem(1);
+    }
+
+    private void loButtonPastButton() {
+        viewPager.setCurrentItem(0);
     }
 }

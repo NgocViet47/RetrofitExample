@@ -18,6 +18,7 @@ import com.example.mypc.retrofitexample.model.responseResultModel.ResponseEventD
 import com.example.mypc.retrofitexample.repository.CallBackData;
 import com.example.mypc.retrofitexample.repository.RepositoryService;
 import com.example.mypc.retrofitexample.repository.TicketboxRepository;
+import com.example.mypc.retrofitexample.sharedpreference.GetTimeToMilliSecond;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,12 +50,14 @@ public class FragmentUpcoming extends Fragment {
         repository.getEvents(getContext(), timeZone, UserManager.getLastSyncTime(getContext()), new CallBackData<ResultResponse<ResponseEventData>>() {
             @Override
             public void onResponseData(ResultResponse<ResponseEventData> responseEventDataResultResponse) {
-                for (int i = 0;i<responseEventDataResultResponse.getData().getEvents().size();i++){
-                    listEvent.add(responseEventDataResultResponse.getData().getEvents().get(i));
+                List<Events> eventsList = responseEventDataResultResponse.getData().getEvents();
+                for (int i = 0; i < eventsList.size(); i++) {
+                    if (GetTimeToMilliSecond.getMilliSecondTimeString(eventsList.get(i).getEventEndDate())
+                            > GetTimeToMilliSecond.getTimeLocal()) {
+                        listEvent.add(responseEventDataResultResponse.getData().getEvents().get(i));
+                    }
                     adapter.notifyDataSetChanged();
                 }
-                /*RecyclerviewEventAdapter adapter = new RecyclerviewEventAdapter(listEvent,getContext());
-                recyclerView.setAdapter(adapter);*/
             }
 
             @Override
