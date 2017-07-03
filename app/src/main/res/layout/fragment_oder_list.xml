@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_oder_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/whiteLight"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Order list"
+            android:textSize="28sp"
+            style="@style/FontRobotoBold"
+            android:textColor="@color/colorTextViewBlack"
+            android:id="@+id/textView16" />
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="10">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="2.5">
+                <LinearLayout
+                    android:layout_width="75dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/loButtonOrderAll"
+                    android:background="@drawable/linearlayout_button_order_gray"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ALL"
+                        android:id="@+id/tvOrderAll"
+                        android:textSize="13sp"
+                        style="@style/FontRobotoMedium"
+                        android:textColor="@color/gray" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="4"
+                android:gravity="center">
+                <LinearLayout
+                    android:layout_width="130dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/loButtonOrderNotCheckIn"
+                    android:background="@drawable/linearlayout_button_order_gray"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="NOT CHECKED-IN"
+                        android:id="@+id/tvOrderNotCheckIn"
+                        android:textSize="13sp"
+                        style="@style/FontRobotoMedium"
+                        android:textColor="@color/gray" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="3.5"
+                android:gravity="center"
+                >
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/loButtonOrderCheckIn"
+                    android:background="@drawable/linearlayout_button_order_gray"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CHECKED-IN"
+                        android:id="@+id/tvOrderCheckIn"
+                        android:textSize="13sp"
+                        style="@style/FontRobotoMedium"
+                        android:textColor="@color/gray" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPagerOrder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_showing"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/whiteLight"
+    tools:context="com.example.mypc.retrofitexample.actvity.ShowingActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/whiteLight">
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:layout_marginTop="29dp"
+        android:layout_marginLeft="15dp"
+        android:text="Please select a showtime"
+        android:textSize="28sp"
+        android:textColor="@color/colorTextViewBlack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView10"
+        style="@style/FontRobotoBold" />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:text="TextView"
+        android:textSize="13sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvTimeZone"
+        style="@style/FontRobotoRegular"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="18dp"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/rvListShowing" />
+</LinearLayout>

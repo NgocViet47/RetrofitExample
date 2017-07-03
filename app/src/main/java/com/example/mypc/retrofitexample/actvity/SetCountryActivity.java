@@ -2,16 +2,15 @@ package com.example.mypc.retrofitexample.actvity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.mypc.retrofitexample.R;
-import com.example.mypc.retrofitexample.constan.ConstanCountry;
+import com.example.mypc.retrofitexample.constant.ConstantCountry;
 import com.example.mypc.retrofitexample.sharedpreference.SharedPreference;
 
-public class SetCountryActivity extends AppCompatActivity implements View.OnClickListener {
+public class SetCountryActivity extends BaseActivity implements View.OnClickListener {
 
     private LinearLayout loVietNam,loThaiLan,loSingapore;
     private ImageView imgSetCounTryExit;
@@ -61,17 +60,23 @@ public class SetCountryActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void loSetSingaporeButton() {
-        SharedPreference.saveInteger(ConstanCountry.COUNTRY_TYPE.SINGAPORE,SharedPreference.KEY_COUNTRY,this);
+        SharedPreference.saveInteger(ConstantCountry.COUNTRY_TYPE.SINGAPORE,SharedPreference.KEY_COUNTRY_ID,this);
+        SharedPreference.saveString(ConstantCountry.COUNTRY_TIMEZONE.SINGAPORE,SharedPreference.KEY_TIME_ZONE,this);
+        SharedPreference.saveString(ConstantCountry.COUNTRY_NAME.SINGAPORE,SharedPreference.KEY_COUNTRY_NAME,this);
         moveLoginActivity();
     }
 
     private void loSetThaiLanButton() {
-        SharedPreference.saveInteger(ConstanCountry.COUNTRY_TYPE.THAILAN,SharedPreference.KEY_COUNTRY,this);
+        SharedPreference.saveInteger(ConstantCountry.COUNTRY_TYPE.THAI_LAN,SharedPreference.KEY_COUNTRY_ID,this);
+        SharedPreference.saveString(ConstantCountry.COUNTRY_TIMEZONE.THAI_LAN,SharedPreference.KEY_TIME_ZONE,this);
+        SharedPreference.saveString(ConstantCountry.COUNTRY_NAME.THAI_LAN,SharedPreference.KEY_COUNTRY_NAME,this);
         moveLoginActivity();
     }
 
     private void loSetVietNamButton() {
-        SharedPreference.saveInteger(ConstanCountry.COUNTRY_TYPE.VIETNAM,SharedPreference.KEY_COUNTRY,this);
+        SharedPreference.saveInteger(ConstantCountry.COUNTRY_TYPE.VIETNAM,SharedPreference.KEY_COUNTRY_ID,this);
+        SharedPreference.saveString(ConstantCountry.COUNTRY_TIMEZONE.VIETNAM,SharedPreference.KEY_TIME_ZONE,this);
+        SharedPreference.saveString(ConstantCountry.COUNTRY_NAME.VIETNAM,SharedPreference.KEY_COUNTRY_NAME,this);
         moveLoginActivity();
     }
 

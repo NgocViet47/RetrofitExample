@@ -1,7 +1,6 @@
 package com.example.mypc.retrofitexample.actvity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,7 +10,7 @@ import com.example.mypc.retrofitexample.R;
 import com.example.mypc.retrofitexample.repository.RepositoryService;
 import com.example.mypc.retrofitexample.repository.TicketboxRepository;
 
-public class ForgotActivity extends AppCompatActivity implements View.OnClickListener {
+public class ForgotActivity extends BaseActivity implements View.OnClickListener {
 
     private EditText edtEmailForgotPassword;
     private Button btnSendEmail;

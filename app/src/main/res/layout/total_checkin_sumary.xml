@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:text="Total Check-in"
+        android:textColor="@color/colorTextViewBlack"
+        android:textSize="12sp"
+        style="@style/FontRobotoBold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:id="@+id/tvTotalTicketIsCheckIn"
+        android:text="12 Ticket(S)"
+        android:textColor="@color/greenTextView"
+        android:textSize="30sp"
+        style="@style/FontRobotoMedium" />
+
+    <LinearLayout
+        android:id="@+id/loTicketIsCheckIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/whiteBackground" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:text="Last sync"
+        style="@style/FontRobotoRegular"
+        android:textColor="@color/gray"
+        android:textSize="12sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/tvLastSyncTimeSummary"
+        android:text="Date Time"
+        style="@style/FontRobotoMedium"
+        android:textColor="@color/colorTextViewBlack"
+        android:textSize="17sp" />
+</LinearLayout>

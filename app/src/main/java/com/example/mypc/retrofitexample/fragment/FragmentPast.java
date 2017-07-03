@@ -12,13 +12,14 @@ import android.view.ViewGroup;
 import com.example.mypc.retrofitexample.R;
 import com.example.mypc.retrofitexample.adapter.RecyclerviewEventAdapter;
 import com.example.mypc.retrofitexample.model.Events;
-import com.example.mypc.retrofitexample.model.ResultResponse;
-import com.example.mypc.retrofitexample.model.UserManager;
+import com.example.mypc.retrofitexample.model.responseResultModel.ResultResponse;
+import com.example.mypc.retrofitexample.utils.TimeManager;
+import com.example.mypc.retrofitexample.utils.UserManager;
 import com.example.mypc.retrofitexample.model.responseResultModel.ResponseEventData;
 import com.example.mypc.retrofitexample.repository.CallBackData;
 import com.example.mypc.retrofitexample.repository.RepositoryService;
 import com.example.mypc.retrofitexample.repository.TicketboxRepository;
-import com.example.mypc.retrofitexample.sharedpreference.GetTimeToMilliSecond;
+import com.example.mypc.retrofitexample.sharedpreference.SharedPreference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,6 @@ import java.util.List;
 
 public class FragmentPast extends Fragment {
     private RecyclerView recyclerView;
-    private String timeZone = "+07:00";
 
     @Nullable
     @Override
@@ -49,13 +49,13 @@ public class FragmentPast extends Fragment {
         final RecyclerviewEventAdapter adapter = new RecyclerviewEventAdapter(listEvent, getContext());
         recyclerView.setAdapter(adapter);
         TicketboxRepository repository = new RepositoryService();
-        repository.getEvents(getContext(), timeZone, UserManager.getLastSyncTime(getContext()), new CallBackData<ResultResponse<ResponseEventData>>() {
+        repository.getEvents(getContext(), SharedPreference.getString(SharedPreference.KEY_TIME_ZONE,getContext()), UserManager.getLastSyncTime(getContext()), new CallBackData<ResultResponse<ResponseEventData>>() {
             @Override
             public void onResponseData(ResultResponse<ResponseEventData> responseEventDataResultResponse) {
                 List<Events> eventsList = responseEventDataResultResponse.getData().getEvents();
                 for (int i = 0; i < eventsList.size(); i++) {
-                    if (GetTimeToMilliSecond.getMilliSecondTimeString(eventsList.get(i).getEventEndDate())
-                            < GetTimeToMilliSecond.getTimeLocal()) {
+                    if (TimeManager.getMilliSecondTimeString(eventsList.get(i).getEventEndDate())
+                            < TimeManager.getTimeLocalMiliSecond()) {
                         listEvent.add(responseEventDataResultResponse.getData().getEvents().get(i));
                     }
                     adapter.notifyDataSetChanged();

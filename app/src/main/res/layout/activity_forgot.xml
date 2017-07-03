@@ -29,7 +29,7 @@
         <TextView
             android:text="Forgot password"
             android:textSize="28sp"
-            android:textStyle="bold"
+            style="@style/FontRobotoBold"
             android:textColor="@color/colorTextViewBlack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,6 +38,7 @@
         <TextView
             android:text="Enter your email address and we’ll send you a link to change your password."
             android:textSize="14sp"
+            style="@style/FontRobotoRegular"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -62,6 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:inputType="textEmailAddress"
+                style="@style/FontRobotoRegular"
                 android:ems="10"
                 android:id="@+id/edtEmailForgotPassword"
                 android:layout_weight="1" />
@@ -76,6 +78,7 @@
             android:textColor="@color/whiteLight"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            style="@style/FontRobotoBold"
             android:id="@+id/btnSendEmailForgotPassword"
             android:background="@color/greenTextView"
             />

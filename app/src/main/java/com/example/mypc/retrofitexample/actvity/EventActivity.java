@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,16 +15,17 @@ import com.example.mypc.retrofitexample.R;
 import com.example.mypc.retrofitexample.adapter.MyFragmentPagerAdapter;
 import com.example.mypc.retrofitexample.fragment.FragmentPast;
 import com.example.mypc.retrofitexample.fragment.FragmentUpcoming;
-import com.example.mypc.retrofitexample.model.UserManager;
+import com.example.mypc.retrofitexample.realm.RealmUser;
+import com.example.mypc.retrofitexample.utils.UserManager;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
+public class EventActivity extends BaseActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
     private ViewPager viewPager;
-    private TextView tvUpComing, tvPast, tvFullNam, tvEmail;
-    private LinearLayout loButtonUpComing, loButtonPast;
+    private TextView tvUpComing, tvPast, tvFullName, tvEmail;
+    private LinearLayout loButtonUpComing, loButtonPast ,loButtonLogUot;
     private ImageView imgButtonMenu, imgButtonSearch, imgAvatar;
     private DrawerLayout drawerLayout;
 
@@ -35,13 +35,15 @@ public class EventActivity extends AppCompatActivity implements ViewPager.OnPage
         setContentView(R.layout.activity_event);
         initialView();
         loadInfoUser();
-        setColorTextviewFirt();
+        setColorTextview(getResources().getColor(R.color.colorTextViewBlack)
+                ,getResources().getColor(R.color.whiteBackground));
         setEvent();
 
     }
 
     private void loadInfoUser() {
-        tvFullNam.setText(UserManager.getUser(this).getFirst_name()+" "+UserManager.getUser(this).getLast_name());
+        tvFullName.setText(UserManager.getUser(this).getFirst_name()
+                +" "+UserManager.getUser(this).getLast_name());
         tvEmail.setText(UserManager.getUser(this).getEmail());
         Picasso.with(this).load(UserManager.getUser(this).getAvatar())
                 .placeholder(R.color.colorPrimary)
@@ -57,6 +59,7 @@ public class EventActivity extends AppCompatActivity implements ViewPager.OnPage
         loButtonPast.setOnClickListener(this);
         imgButtonMenu.setOnClickListener(this);
         imgButtonSearch.setOnClickListener(this);
+        loButtonLogUot.setOnClickListener(this);
     }
 
     private void initialView() {
@@ -69,11 +72,12 @@ public class EventActivity extends AppCompatActivity implements ViewPager.OnPage
 
         tvUpComing = (TextView) findViewById(R.id.tvUpComingEvent);
         tvPast = (TextView) findViewById(R.id.tvPastEvent);
-        tvFullNam = (TextView) findViewById(R.id.tvFullNameUserEvent);
+        tvFullName = (TextView) findViewById(R.id.tvFullNameUserEvent);
         tvEmail = (TextView) findViewById(R.id.tvEmailUserEvent);
 
         loButtonPast = (LinearLayout) findViewById(R.id.loButtonPastEvent);
         loButtonUpComing = (LinearLayout) findViewById(R.id.loButtonUpComingEvent);
+        loButtonLogUot = (LinearLayout) findViewById(R.id.loButtonLogUot);
 
         viewPager = (ViewPager) findViewById(R.id.viewPagerEvent);
         List<Fragment> listFragment = new ArrayList<>();
@@ -95,16 +99,17 @@ public class EventActivity extends AppCompatActivity implements ViewPager.OnPage
     @Override
     public void onPageSelected(int position) {
         if (position == 0) {
-            setColorTextviewFirt();
+            setColorTextview(getResources().getColor(R.color.colorTextViewBlack)
+                    ,getResources().getColor(R.color.whiteBackground));
         } else {
-            tvUpComing.setTextColor(getResources().getColor(R.color.whiteBackground));
-            tvPast.setTextColor(getResources().getColor(R.color.colorTextViewBlack));
+            setColorTextview(getResources().getColor(R.color.whiteBackground)
+                    ,getResources().getColor(R.color.colorTextViewBlack));
         }
     }
 
-    private void setColorTextviewFirt() {
-        tvUpComing.setTextColor(getResources().getColor(R.color.colorTextViewBlack));
-        tvPast.setTextColor(getResources().getColor(R.color.whiteBackground));
+    private void setColorTextview(int idColorTvUpComing, int idColorTvPast) {
+        tvUpComing.setTextColor(idColorTvUpComing);
+        tvPast.setTextColor(idColorTvPast);
     }
 
     @Override
@@ -127,8 +132,17 @@ public class EventActivity extends AppCompatActivity implements ViewPager.OnPage
             case R.id.imgButtonSearchEvent:
                 imgButtonSearchButton();
                 break;
-
+            case R.id.loButtonLogUot:
+                loButtonLogUotButton();
+                break;
         }
+    }
+
+    private void loButtonLogUotButton() {
+        RealmUser.clearUser(this);
+        Intent intent = new Intent(this, SetCountryActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void imgButtonSearchButton() {

@@ -4,7 +4,6 @@ package com.example.mypc.retrofitexample.model;
  * Created by MyPC on 6/1/2017.
  */
 
-import com.example.mypc.retrofitexample.model.dataEvent.Showing;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -32,7 +31,7 @@ public class Events {
     private String eventEndDate;
     @SerializedName("showings")
     @Expose
-    private List<Showing> showings = null;
+    private List<ShowingEvent> showings = null;
     @SerializedName("venue_title")
     @Expose
     private String venueTitle;
@@ -94,11 +93,11 @@ public class Events {
         this.eventEndDate = eventEndDate;
     }
 
-    public List<Showing> getShowings() {
+    public List<ShowingEvent> getShowings() {
         return showings;
     }
 
-    public void setShowings(List<Showing> showing) {
+    public void setShowings(List<ShowingEvent> showing) {
         this.showings = showing;
     }
 

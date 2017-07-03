@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mypc.retrofitexample">
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -9,6 +11,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="barcode" />
+
         <activity
             android:name=".actvity.FirstActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -23,7 +29,12 @@
         <activity android:name=".actvity.SetCountryActivity" />
         <activity android:name=".actvity.EventActivity" />
         <activity android:name=".actvity.SearchActivity" />
-        <activity android:name=".actvity.ForgotActivity"></activity>
+        <activity android:name=".actvity.ForgotActivity" />
+        <activity android:name=".actvity.ShowingActivity" />
+        <activity android:name=".actvity.SumaryActivity" />
+        <activity android:name=".actvity.TicketSoldActivity" />
+        <activity android:name=".actvity.CheckInActivity" />
+        <activity android:name=".actvity.ScannerBarcodeActivity"></activity>
     </application>
 
 </manifest>

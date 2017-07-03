@@ -8,8 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.example.mypc.retrofitexample.R;
+import com.example.mypc.retrofitexample.utils.TimeManager;
 import com.example.mypc.retrofitexample.realm.RealmUser;
-import com.example.mypc.retrofitexample.sharedpreference.GetTimeToMilliSecond;
 import com.example.mypc.retrofitexample.sharedpreference.SharedPreference;
 
 public class FirstActivity extends AppCompatActivity {
@@ -28,7 +28,7 @@ public class FirstActivity extends AppCompatActivity {
 
                 if(RealmUser.getUser(getApplicationContext())!=null&&
                         SharedPreference.getLong(SharedPreference.KEY_START_TIME,getApplicationContext())
-                                > GetTimeToMilliSecond.getTimeLocal()){
+                                > TimeManager.getTimeLocalMiliSecond()){
                     Intent intent = new Intent(getApplicationContext(),EventActivity.class);
                     startActivity(intent);
                 }else {

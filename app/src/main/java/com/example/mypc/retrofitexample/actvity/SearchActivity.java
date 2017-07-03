@@ -1,7 +1,6 @@
 package com.example.mypc.retrofitexample.actvity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -11,17 +10,17 @@ import android.widget.ImageView;
 import com.example.mypc.retrofitexample.R;
 import com.example.mypc.retrofitexample.adapter.RecyclerviewEventAdapter;
 import com.example.mypc.retrofitexample.model.Events;
-import com.example.mypc.retrofitexample.model.ResultResponse;
-import com.example.mypc.retrofitexample.model.UserManager;
 import com.example.mypc.retrofitexample.model.responseResultModel.ResponseEventData;
+import com.example.mypc.retrofitexample.model.responseResultModel.ResultResponse;
 import com.example.mypc.retrofitexample.repository.CallBackData;
 import com.example.mypc.retrofitexample.repository.RepositoryService;
 import com.example.mypc.retrofitexample.repository.TicketboxRepository;
+import com.example.mypc.retrofitexample.utils.UserManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchActivity extends AppCompatActivity implements View.OnClickListener {
+public class SearchActivity extends BaseActivity implements View.OnClickListener {
 
     private SearchView searchView;
     private RecyclerView recyclerView;

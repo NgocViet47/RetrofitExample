@@ -9,4 +9,10 @@
 
     <dimen name="tab_height">48dp</dimen>
     <dimen name="tab_height_large">72dp</dimen>
+
+    <dimen name="width_height_progress">40dp</dimen>
+    <dimen name="width_arc_background">80dp</dimen>
+    <dimen name="width_arc_primary">80dp</dimen>
+    <dimen name="text_size_progress">18sp</dimen>
+
 </resources>

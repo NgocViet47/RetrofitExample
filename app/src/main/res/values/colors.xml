@@ -9,8 +9,12 @@
     <color name="greenTextView">#669900</color>
     <color name="whiteLight">#FFFFFF</color>
     <color name="whiteBackground">#DDDDDD</color>
+    <color name="whiteGray">#F2F2F2</color>
+    <color name="whiteGrayLight">#F1F1F1</color>
+    <color name="gray">#666666</color>
 
     <color name="transparent">#00000000</color>
+    <color name="colorArcBG">#303F9F</color>
 
     <color name="medium_text_enabled">#FF000000</color>
     <color name="medium_text_disabled">#4D000000</color>

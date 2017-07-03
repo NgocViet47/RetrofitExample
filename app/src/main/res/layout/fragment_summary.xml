@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/whiteGrayLight">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/whiteLight"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="25dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        style="@style/FontRobotoBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Summary"
+                        android:textColor="@color/colorTextViewBlack"
+                        android:textSize="28sp" />
+
+                    <TextView
+                        android:id="@+id/tvNameEventShowing"
+                        style="@style/FontRobotoBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="TextView"
+                        android:textColor="@color/colorTextViewBlack"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tvTimeStartEvent"
+                        style="@style/FontRobotoRegular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="TextView" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rim_linearlayout_not_radius">
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rim_linearlayout_radius"
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4.85"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1">
+
+                                    <TextView
+                                        style="@style/FontRobotoRegular"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="From"
+                                        android:textColor="@color/gray"
+                                        android:textSize="13sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="38dp"
+                                    android:layout_marginTop="5dp"
+                                    android:orientation="horizontal">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/rim_linearlayout_not_radius_color_gray"
+                                        android:gravity="center">
+
+                                        <TextView
+                                            android:id="@+id/tvStartTimeShowing"
+                                            style="@style/FontRobotoMedium"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="AA"
+                                            android:textColor="@color/colorTextViewBlack"
+                                            android:textSize="15sp" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/loButtonStartDateCalendar"
+                                        android:layout_width="38dp"
+                                        android:layout_height="38dp"
+                                        android:background="@color/greenTextView"
+                                        android:gravity="center">
+
+                                        <ImageView
+                                            android:layout_width="8dp"
+                                            android:layout_height="12dp"
+                                            app:srcCompat="@drawable/dropdown" />
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.3"></LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4.85"
+                                android:orientation="vertical">
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1">
+
+                                    <TextView
+                                        style="@style/FontRobotoRegular"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="To"
+                                        android:textColor="@color/gray"
+                                        android:textSize="13sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="38dp"
+                                    android:layout_marginTop="5dp"
+                                    android:orientation="horizontal">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/rim_linearlayout_not_radius_color_gray"
+                                        android:gravity="center">
+
+                                        <TextView
+                                            android:id="@+id/tvEndTimeShowing"
+                                            style="@style/FontRobotoMedium"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textColor="@color/colorTextViewBlack"
+                                            android:textSize="15sp" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/loButtonEndDateCalendar"
+                                        android:layout_width="38dp"
+                                        android:layout_height="38dp"
+                                        android:background="@color/greenTextView"
+                                        android:gravity="center">
+
+                                        <ImageView
+                                            android:layout_width="8dp"
+                                            android:layout_height="12dp"
+                                            app:srcCompat="@drawable/dropdown" />
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/textView13"
+                            style="@style/FontRobotoBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="40dp"
+                            android:text="TOTAL INCOME"
+                            android:textColor="@color/colorTextViewBlack"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tvTotalIncome"
+                            style="@style/FontRobotoMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="9dp"
+                            android:text="AA"
+                            android:textColor="@color/greenTextView"
+                            android:textSize="30sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:orientation="horizontal"
+                            android:weightSum="10">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="4.95"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/FontRobotoRegular"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Total sales (+)"
+                                    android:textColor="@color/gray"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:id="@+id/tvTotalSales"
+                                    style="@style/FontRobotoMedium"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="AAA"
+                                    android:textColor="@color/colorTextViewBlack"
+                                    android:textSize="17sp" />
+
+                                <TextView
+                                    style="@style/FontRobotoRegular"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="16dp"
+                                    android:text="Total extra charge (-)"
+                                    android:textColor="@color/gray"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:id="@+id/tvTotalExtraCharge"
+                                    style="@style/FontRobotoMedium"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="AAA"
+                                    android:textColor="@color/colorTextViewBlack"
+                                    android:textSize="17sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.1"
+                                android:background="@color/whiteBackground"></LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="4.95"
+                                android:orientation="vertical"
+                                android:paddingLeft="4dp">
+
+                                <TextView
+                                    style="@style/FontRobotoRegular"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Total commissions (-)"
+                                    android:textColor="@color/gray"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:id="@+id/tvTotalCommissions"
+                                    style="@style/FontRobotoMedium"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="AAA"
+                                    android:textColor="@color/colorTextViewBlack"
+                                    android:textSize="17sp" />
+
+                                <TextView
+                                    style="@style/FontRobotoRegular"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="16dp"
+                                    android:text="Total service fee (-)"
+                                    android:textColor="@color/gray"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:id="@+id/tvTotalServiceFee"
+                                    style="@style/FontRobotoMedium"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="AAA"
+                                    android:textColor="@color/colorTextViewBlack"
+                                    android:textSize="17sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/loViewPercentTicketSold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="42dp"
+                                android:text="TICKETS SOLD"
+                                android:textColor="@color/colorTextViewBlack"
+                                android:textSize="12sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="14dp"
+                                android:layout_marginTop="28dp"
+                                android:orientation="horizontal"
+                                android:weightSum="10">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2.5"
+                                    android:gravity="center">
+
+                                    <com.example.mypc.retrofitexample.circleprogress.DonutProgress
+                                        android:id="@+id/progressTotalTicketSold"
+                                        style="@style/FontRobotoMedium"
+                                        android:layout_width="80dp"
+                                        android:layout_height="80dp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="7.5"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="20dp">
+
+                                    <TextView
+                                        style="@style/FontRobotoRegular"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Total tickets sold"
+                                        android:textColor="@color/gray"
+                                        android:textSize="13sp" />
+
+                                    <TextView
+                                        android:id="@+id/tvTotalTicketSold"
+                                        style="@style/FontRobotoMedium"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        android:text="1830/2000"
+                                        android:textColor="@color/colorTextViewBlack"
+                                        android:textSize="17sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal"
+                            android:weightSum="10">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="4.95"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/FontRobotoRegular"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Paid"
+                                    android:textColor="@color/gray"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:id="@+id/tvTicketPaid"
+                                    style="@style/FontRobotoMedium"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="AAA"
+                                    android:textColor="@color/colorTextViewBlack"
+                                    android:textSize="17sp" />
+
+                                <TextView
+                                    style="@style/FontRobotoRegular"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="16dp"
+                                    android:text="Processing"
+                                    android:textColor="@color/gray"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:id="@+id/tvTicketProcessing"
+                                    style="@style/FontRobotoMedium"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="AAA"
+                                    android:textColor="@color/colorTextViewBlack"
+                                    android:textSize="17sp" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.1"
+                                android:background="@color/whiteBackground"></LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="4.95"
+                                android:orientation="vertical"
+                                android:paddingLeft="4dp">
+
+                                <TextView
+                                    style="@style/FontRobotoRegular"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Cancelled / Refunded"
+                                    android:textColor="@color/gray"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:id="@+id/tvTicketCancel"
+                                    style="@style/FontRobotoMedium"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="AAA"
+                                    android:textColor="@color/colorTextViewBlack"
+                                    android:textSize="17sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/btnSeeMoreSummary"
+                            style="@style/FontRobotoBold"
+                            android:layout_width="155dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:background="@color/greenTextView"
+                            android:text="SEE MORE"
+                            android:layout_marginBottom="52sp"
+                            android:layout_marginTop="42dp"
+                            android:textColor="@color/whiteLight" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/rim_linearlayout_radius">
+
+                        <include
+                            android:id="@+id/loIncludeDetailTicketCheckIn"
+                            layout="@layout/total_checkin_sumary" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

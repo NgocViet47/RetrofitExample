@@ -9,14 +9,6 @@
     tools:context="com.example.mypc.retrofitexample.actvity.MainActivity">
 
 
-    <ImageView
-        android:id="@+id/imgLoginBack"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="16dp"
-        app:srcCompat="@drawable/iconback" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,22 +22,23 @@
             android:text="@string/textview_log_in"
             android:textColor="@color/colorTextViewBlack"
             android:textSize="@dimen/textview_country"
-            android:textStyle="normal|bold" />
+            style="@style/FontRobotoBold" />
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:text="@string/please_login_to_your_ticketbox_account"
-            android:layout_marginTop="15dp" />
+            style="@style/FontRobotoRegular"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_marginTop="50dp"
             android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:background="#F2F2F2"
             android:orientation="horizontal"
-            android:weightSum="100"
-            android:background="#F2F2F2">
+            android:weightSum="100">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -74,7 +67,8 @@
                     android:ems="10"
                     android:hint="Email"
                     android:inputType="textEmailAddress"
-                    android:text="cnv471994@gmail.com" />
+                    style="@style/FontRobotoRegular"
+                    android:text="test_vn@yopmail.com" />
             </LinearLayout>
         </LinearLayout>
 
@@ -82,10 +76,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:weightSum="100"
+            android:layout_marginTop="10dp"
             android:background="#F2F2F2"
-            android:layout_marginTop="10dp">
+            android:orientation="horizontal"
+            android:weightSum="100">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -105,87 +99,104 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="20">
+
                 <EditText
                     android:id="@+id/edtPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:ems="10"
                     android:hint="Password"
+                    style="@style/FontRobotoRegular"
                     android:inputType="textPassword"
-                    android:layout_gravity="center"
-                    android:text="146123636329355449354575" />
+                    android:text="123456" />
             </LinearLayout>
 
         </LinearLayout>
 
         <Button
-            android:layout_marginTop="26dp"
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginTop="26dp"
             android:background="#669900"
             android:text="Log In"
-            android:textColor="#ffffff"/>
+            style="@style/FontRobotoBold"
+            android:textColor="#ffffff" />
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="76dp"
+            android:orientation="horizontal"
             android:weightSum="100">
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_gravity="center"
+                android:layout_weight="30"
                 android:background="@color/whiteBackground"
-                android:layout_weight="30"></LinearLayout>
+                android:orientation="vertical"></LinearLayout>
+
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="18dp"
+                android:layout_gravity="center"
                 android:layout_weight="40"
-                android:layout_gravity="center">
+                android:orientation="vertical">
 
                 <TextView
-                    android:text="Or"
+                    android:id="@+id/textView7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView7"
-                    android:textSize="15sp"
                     android:gravity="center"
-                    android:textColor="@color/colorTextViewBlack"/>
+                    android:text="Or"
+                    style="@style/FontRobotoRegular"
+                    android:textColor="@color/colorTextViewBlack"
+                    android:textSize="15sp" />
             </LinearLayout>
+
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_gravity="center"
+                android:layout_weight="30"
                 android:background="@color/whiteBackground"
-                android:layout_weight="30"></LinearLayout>
+                android:orientation="vertical"></LinearLayout>
         </LinearLayout>
 
         <Button
-            android:text="LOG IN WITH FACEBOOK"
+            android:id="@+id/btnLoginFacebook"
             android:layout_width="match_parent"
-            android:textSize="14sp"
-            android:textColor="#3B5998"
-            android:background="@drawable/buttonloginfacebook"
             android:layout_height="50dp"
-            android:id="@+id/btnLoginFacebook" />
+            android:background="@drawable/buttonloginfacebook"
+            android:text="LOG IN WITH FACEBOOK"
+            style="@style/FontRobotoBold"
+            android:textColor="#3B5998"
+            android:textSize="14sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvForgotPassword"
-            android:layout_gravity="bottom"
-            android:text="Forgot password?"
-            android:textColor="@color/colorTextViewBlack"
-            android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/tvForgotPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="Forgot password?"
+                style="@style/FontRobotoMedium"
+                android:textColor="@color/colorTextViewBlack"
+                android:textSize="15sp" />
         </LinearLayout>
     </LinearLayout>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/whiteLight">
+    </android.support.v7.widget.Toolbar>
 
 </LinearLayout>

@@ -4,14 +4,17 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.mypc.retrofitexample.R;
-import com.example.mypc.retrofitexample.constan.ClientApi;
-import com.example.mypc.retrofitexample.constan.ConstantUtils;
-import com.example.mypc.retrofitexample.model.ResultResponse;
+import com.example.mypc.retrofitexample.constant.ClientApi;
+import com.example.mypc.retrofitexample.constant.ConstantUtils;
+import com.example.mypc.retrofitexample.model.responseResultModel.ResultResponse;
+import com.example.mypc.retrofitexample.model.ShowingEvent;
 import com.example.mypc.retrofitexample.model.StatusOrder;
 import com.example.mypc.retrofitexample.model.StatusTicket;
 import com.example.mypc.retrofitexample.model.User;
-import com.example.mypc.retrofitexample.model.UserManager;
+import com.example.mypc.retrofitexample.utils.UserManager;
 import com.example.mypc.retrofitexample.model.responseResultModel.ResponseEventData;
+import com.example.mypc.retrofitexample.model.responseResultModel.ResponseOrderShowInData;
+import com.example.mypc.retrofitexample.model.responseResultModel.ResponseReportData;
 import com.example.mypc.retrofitexample.realm.RealmStatus;
 import com.example.mypc.retrofitexample.realm.RealmUser;
 import com.example.mypc.retrofitexample.retrofit.GeneralMethods;
@@ -48,6 +51,11 @@ public class RepositoryService implements TicketboxRepository {
         }
 
         return headers;
+    }
+    private HashMap<String,Integer> getTicketId(){
+        HashMap<String,Integer> ticketId = new HashMap<>();
+        ticketId.put("ticket_id",0);
+        return ticketId;
     }
 
     @Override
@@ -168,10 +176,10 @@ public class RepositoryService implements TicketboxRepository {
                         if (resultResponse != null) {
                             if (resultResponse.isSuccess()) {
 
-                                for(int i:resultResponse.getData()){
+                                for (int i : resultResponse.getData()) {
                                     StatusOrder statusOrder = new StatusOrder();
                                     statusOrder.setData(i);
-                                    RealmStatus.createStatusOrder(context,statusOrder);
+                                    RealmStatus.createStatusOrder(context, statusOrder);
                                 }
 
                                 callBackData.onResponseData(resultResponse);
@@ -247,7 +255,7 @@ public class RepositoryService implements TicketboxRepository {
     @Override
     public void resetPassword(Context context, String email) {
         ClientApi clientApi = new ClientApi();
-        Call<ResponseBody> callResetPassword = clientApi.getTicketBoxService().resetPassword(getHeaders(context),email,"1");
+        Call<ResponseBody> callResetPassword = clientApi.getTicketBoxService().resetPassword(getHeaders(context), email, "1");
         callResetPassword.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -257,6 +265,135 @@ public class RepositoryService implements TicketboxRepository {
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
 
+            }
+        });
+    }
+
+    @Override
+    public void getShowingByEventId(final Context context, Integer evnetId, String timeZone, final CallBackData<ResultResponse<List<ShowingEvent>>> callBackData) {
+        ClientApi clientApi = new ClientApi();
+        Call<ResponseBody> callShowingByEventId = clientApi.getTicketBoxService().getShowingByEventId(getHeaders(context), evnetId, timeZone);
+        callShowingByEventId.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response != null && response.body() != null) {
+
+                    try {
+                        String result = response.body().string();
+                        Log.e("result", result);
+                        Type type = new TypeToken<ResultResponse<List<ShowingEvent>>>() {
+                        }.getType();
+                        ResultResponse<List<ShowingEvent>> resultResponse = GeneralMethods.getGson().fromJson(result, type);
+                        if (resultResponse != null) {
+                            if (resultResponse.isSuccess()) {
+                                callBackData.onResponseData(resultResponse);
+                            } else {
+                                callBackData.onFailed(resultResponse.getMessage());
+                            }
+                        } else {
+                            callBackData.onFailed(context.getString(R.string.msg_network_error));
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    callBackData.onFailed(context.getString(R.string.msg_network_error));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                if (t instanceof UnknownHostException) {
+                    callBackData.onFailed(context.getString(R.string.msg_network_error));
+                } else {
+                    callBackData.onFailed(context.getString(R.string.msg_network_error));
+                }
+            }
+        });
+    }
+
+    @Override
+    public void getRePorting(final Context context, Integer eventId, Integer showingId, String startDate, String endDate, String timeZone, final CallBackData<ResultResponse<ResponseReportData>> callBackData) {
+        ClientApi clientApi = new ClientApi();
+        Call<ResponseBody> callGetReportByEventIdAndShowingId = clientApi.getTicketBoxService().getRePorting(eventId, showingId, getHeaders(context),timeZone);
+        callGetReportByEventIdAndShowingId.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response != null && response.body() != null) {
+
+                    try {
+                        String result = response.body().string();
+                        Log.e("result", result);
+                        Type type = new TypeToken<ResultResponse<ResponseReportData>>() {
+                        }.getType();
+                        ResultResponse<ResponseReportData> resultResponse = GeneralMethods.getGson().fromJson(result, type);
+                        if (resultResponse != null) {
+                            if (resultResponse.isSuccess()) {
+                                callBackData.onResponseData(resultResponse);
+                            } else {
+                                callBackData.onFailed(resultResponse.getMessage());
+                            }
+                        } else {
+                            callBackData.onFailed(context.getString(R.string.msg_network_error));
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    callBackData.onFailed(context.getString(R.string.msg_network_error));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                if (t instanceof UnknownHostException) {
+                    callBackData.onFailed(context.getString(R.string.msg_network_error));
+                } else {
+                    callBackData.onFailed(context.getString(R.string.msg_network_error));
+                }
+            }
+        });
+    }
+
+    @Override
+    public void getShowInOrder(final Context context, Integer showingId, String timeZone, final CallBackData<ResultResponse<ResponseOrderShowInData>> callBackData) {
+        ClientApi clientApi = new ClientApi();
+        Call<ResponseBody> callGetReportByEventIdAndShowingId = clientApi.getTicketBoxService().getShowInOrder(showingId,getHeaders(context),getTicketId(),getTicketId(),timeZone);
+        callGetReportByEventIdAndShowingId.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response != null && response.body() != null) {
+
+                    try {
+                        String result = response.body().string();
+                        Log.e("result", result);
+                        Type type = new TypeToken<ResultResponse<ResponseOrderShowInData>>() {
+                        }.getType();
+                        ResultResponse<ResponseOrderShowInData> resultResponse = GeneralMethods.getGson().fromJson(result, type);
+                        if (resultResponse != null) {
+                            if (resultResponse.isSuccess()) {
+                                callBackData.onResponseData(resultResponse);
+                            } else {
+                                callBackData.onFailed(resultResponse.getMessage());
+                            }
+                        } else {
+                            callBackData.onFailed(context.getString(R.string.msg_network_error));
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    callBackData.onFailed(context.getString(R.string.msg_network_error));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                if (t instanceof UnknownHostException) {
+                    callBackData.onFailed(context.getString(R.string.msg_network_error));
+                } else {
+                    callBackData.onFailed(context.getString(R.string.msg_network_error));
+                }
             }
         });
     }

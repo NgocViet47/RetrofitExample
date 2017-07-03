@@ -1,6 +1,7 @@
 package com.example.mypc.retrofitexample.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,11 +9,15 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.mypc.retrofitexample.R;
+import com.example.mypc.retrofitexample.actvity.ScannerBarcodeActivity;
+import com.example.mypc.retrofitexample.actvity.ShowingActivity;
 import com.example.mypc.retrofitexample.filter.CustomFilter;
 import com.example.mypc.retrofitexample.model.Events;
+import com.example.mypc.retrofitexample.putextra.BundleExtra;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -70,10 +75,11 @@ public class RecyclerviewEventAdapter extends RecyclerView.Adapter<RecyclerviewE
         return filter;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         protected TextView tvTitle,tvType,tvAddress;
         protected ImageView imgEvent;
+        protected LinearLayout loButtonSumaryEvent,loButtonCheckIn;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -81,6 +87,38 @@ public class RecyclerviewEventAdapter extends RecyclerView.Adapter<RecyclerviewE
             tvType = (TextView) itemView.findViewById(R.id.tvTypeItemEvent);
             tvAddress = (TextView) itemView.findViewById(R.id.tvAddressItemEvent);
             imgEvent = (ImageView) itemView.findViewById(R.id.imgCenterItemEvent);
+            loButtonSumaryEvent = (LinearLayout) itemView.findViewById(R.id.loButtonSumaryItemEvent);
+            loButtonCheckIn = (LinearLayout) itemView.findViewById(R.id.loButtonCheckInItemEvent);
+
+            loButtonSumaryEvent.setOnClickListener(this);
+            loButtonCheckIn.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.loButtonSumaryItemEvent:
+                    loButtonSumaryEventButton();
+                    break;
+                case R.id.loButtonCheckInItemEvent:
+                    loButtonCheckInButton();
+                    break;
+            }
+        }
+
+        private void loButtonCheckInButton() {
+            Intent intent =new Intent(mContext, ScannerBarcodeActivity.class);
+            mContext.startActivity(intent);
+        }
+
+        private void loButtonSumaryEventButton() {
+            Intent intent = new Intent(mContext, ShowingActivity.class);
+            /*String dateIntent = GeneralMethods.getGson().toJson(contactInfoList.get(getAdapterPosition()).getShowings());
+            intent.putExtra(BundleExtra.PUT_SHOWING,dateIntent);*/
+            intent.putExtra(BundleExtra.PUT_EVENTID,contactInfoList.get(getAdapterPosition()).getEventId());
+            mContext.startActivity(intent);
         }
     }
+
+
 }

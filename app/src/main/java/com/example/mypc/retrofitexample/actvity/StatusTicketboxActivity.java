@@ -1,41 +1,35 @@
 package com.example.mypc.retrofitexample.actvity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.example.mypc.retrofitexample.R;
-import com.example.mypc.retrofitexample.model.ResultResponse;
-import com.example.mypc.retrofitexample.model.responseResultModel.ResponseEventData;
-import com.example.mypc.retrofitexample.repository.CallBackData;
-import com.example.mypc.retrofitexample.repository.RepositoryService;
-import com.example.mypc.retrofitexample.repository.TicketboxRepository;
-import com.example.mypc.retrofitexample.sharedpreference.SharedPreference;
 
-import java.util.List;
-
-public class StatusTicketboxActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button btnGetListTicketBox, btnGetListOrder, btngetEvents;
+public class StatusTicketboxActivity extends BaseActivity implements View.OnClickListener {
+    /*private Button btnGetListTicketBox, btnGetListOrder, btngetEvents;
     private TextView tvGetStatusTicKetBox;
     private static final String DATA_NAME_SHAREDPREFERENCES = "myDataSharedPreferences";
     private static final String KEY_LAST_SYNC_TIME = "lastSyncTime";
     private String lastSyncTime = "";
-    private String timeZone = "+07:00";
+    private String timeZone = "+07:00";*/
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_status_ticketbox);
+        setContentView(R.layout.dialog_calendar);
 
-        initialView();
+        /*initialView();
         addEvent();
-        SharedPreference.saveString(lastSyncTime,SharedPreference.KEY_LAST_SYNC_TIME,this);
+        SharedPreference.saveString(lastSyncTime,SharedPreference.KEY_LAST_SYNC_TIME,this);*/
     }
 
-    private void addEvent() {
+    @Override
+    public void onClick(View v) {
+
+    }
+
+   /* private void addEvent() {
         btnGetListTicketBox.setOnClickListener(this);
         btnGetListOrder.setOnClickListener(this);
         btngetEvents.setOnClickListener(this);
@@ -123,5 +117,5 @@ public class StatusTicketboxActivity extends AppCompatActivity implements View.O
 
             }
         });
-    }
+    }*/
 }

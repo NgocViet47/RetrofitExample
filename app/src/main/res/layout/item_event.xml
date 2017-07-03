@@ -16,22 +16,24 @@
         android:layout_width="match_parent"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:layout_height="145dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="vertical">
+
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:textSize="16sp"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/colorTextViewBlack"
-            android:text="AAAA"
             android:id="@+id/tvTypeItemEvent"
-            android:textStyle="normal|bold" />
+            style="@style/FontRobotoBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="AAAA"
+            android:textColor="@color/colorTextViewBlack"
+            android:textSize="16sp" />
 
         <TextView
             android:text="AAAAAA"
             android:textSize="13sp"
+            style="@style/FontRobotoRegular"
             android:textColor="@color/greenlight"
             android:layout_marginTop="8dp"
             android:layout_width="wrap_content"
@@ -41,12 +43,14 @@
         <TextView
             android:text="AAAAAA"
             android:textSize="13sp"
+            android:layout_marginTop="5dp"
+            style="@style/FontRobotoRegular"
             android:layout_width="wrap_content"
             android:layout_height="15dp"
             android:id="@+id/tvAddressItemEvent" />
 
         <LinearLayout
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -79,7 +83,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView11"
-                        android:textStyle="normal|bold" />
+                        style="@style/FontRobotoBold"/>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -106,13 +110,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView11"
-                    android:textStyle="normal|bold" />
+                    style="@style/FontRobotoBold" />
             </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
     <LinearLayout
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_width="match_parent"
