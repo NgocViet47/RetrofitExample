@@ -117,7 +117,7 @@ public class RecyclerviewShowingAdapter extends RecyclerView.Adapter<Recyclervie
         private void saveTicketRealmByShowInId() {
             //TODO set item again not delete
             if (CurrentShowingManager.getListCurrentShowing(mContext) != null
-                    ||TicketManager.getListTicket(mContext).size()!=0) {
+                    || TicketManager.getListTicket(mContext).size() != 0) {
                 CurrentShowingManager.clearAllCurrentShowing(mContext);
                 TicketManager.clearAllTicket(mContext);
                 OrderManager.clearAllOrder(mContext);
@@ -140,7 +140,7 @@ public class RecyclerviewShowingAdapter extends RecyclerView.Adapter<Recyclervie
 
         private void startServiceUpdateTicket() {
             Intent myIntent = new Intent(mContext, ServiceUpdateTicket.class);
-            Log.e("Stop","Stop");
+            Log.e("Stop", "Stop");
             mContext.startService(myIntent);
         }
     }

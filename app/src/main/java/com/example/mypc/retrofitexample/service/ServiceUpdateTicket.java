@@ -50,7 +50,7 @@ public class ServiceUpdateTicket extends Service {
     }
 
     private void updateTicketNewCheckIn() {
-        if(listTicket.size()!=0) {
+        if (listTicket.size() != 0) {
 
             TicketboxRepository ticketboxRepository = new RepositoryService();
             ticketboxRepository.postTicketCheckIn(this, CurrentShowingManager.getListCurrentShowing(this).getShowingId()
@@ -61,7 +61,7 @@ public class ServiceUpdateTicket extends Service {
                         public void onResponseData(ResultResponse<ResponseOrderShowInData> responseOrderShowInDataResultResponse) {
                             clearRealmShowIng();
                             CurrentShowingManager.createCurrentShowing(getApplicationContext(), responseOrderShowInDataResultResponse.getData().getCurrentShowing());
-                            Log.e("Refesh data: ","Finish");
+                            Log.e("Refesh data: ", "Finish");
                         }
 
                         @Override
@@ -71,8 +71,7 @@ public class ServiceUpdateTicket extends Service {
                     });
 
 
-        }
-        else Log.e("Ticket: ","Not CheckIn");
+        } else Log.e("Ticket: ", "Not CheckIn");
     }
 
     private void clearRealmShowIng() {
@@ -83,10 +82,10 @@ public class ServiceUpdateTicket extends Service {
     }
 
     private void checkInListTicket() {
-        for(int i = 0;i< TicketManager.getListTicket(this).size();i++){
+        for (int i = 0; i < TicketManager.getListTicket(this).size(); i++) {
             TicketCheck ticketCheck = new TicketCheck();
             Ticket ticket = TicketManager.getListTicket(this).get(i);
-            if(TicketManager.getListTicket(this).get(i).isChecked()==false){
+            if (TicketManager.getListTicket(this).get(i).isChecked() == false) {
                 ticketCheck.setTicketId(ticket.getTicketId());
                 ticketCheck.setTimeCheckIn(ticket.getCheckedInTime());
                 listTicket.add(ticketCheck);
