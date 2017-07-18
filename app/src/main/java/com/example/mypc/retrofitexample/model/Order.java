@@ -3,11 +3,13 @@ package com.example.mypc.retrofitexample.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import io.realm.RealmObject;
+
 /**
  * Created by MyPC on 6/27/2017.
  */
 
-public class Order {
+public class Order extends RealmObject {
     @SerializedName("order_id")
     @Expose
     private Integer orderId;

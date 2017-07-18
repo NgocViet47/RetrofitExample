@@ -2,12 +2,13 @@ package com.example.mypc.retrofitexample.repository;
 
 import android.content.Context;
 
-import com.example.mypc.retrofitexample.model.responseResultModel.ResultResponse;
 import com.example.mypc.retrofitexample.model.ShowingEvent;
+import com.example.mypc.retrofitexample.model.TicketCheck;
 import com.example.mypc.retrofitexample.model.User;
 import com.example.mypc.retrofitexample.model.responseResultModel.ResponseEventData;
 import com.example.mypc.retrofitexample.model.responseResultModel.ResponseOrderShowInData;
 import com.example.mypc.retrofitexample.model.responseResultModel.ResponseReportData;
+import com.example.mypc.retrofitexample.model.responseResultModel.ResultResponse;
 
 import java.util.List;
 
@@ -24,4 +25,5 @@ public interface TicketboxRepository {
     void getShowingByEventId(final Context context, Integer evnetId, String timeZone, CallBackData<ResultResponse<List<ShowingEvent>>> callBackData);
     void getRePorting(final Context context, Integer eventId, Integer showingId, String startDate, String endDate, String timeZone, CallBackData<ResultResponse<ResponseReportData>> callBackData);
     void getShowInOrder(final Context context,Integer showingId, String timeZone, CallBackData<ResultResponse<ResponseOrderShowInData>> callBackData);
+    void postTicketCheckIn(final Context context,Integer showingId, String timeZone,List<TicketCheck> ticketCheckList,CallBackData<ResultResponse<ResponseOrderShowInData>> callBackData);
 }

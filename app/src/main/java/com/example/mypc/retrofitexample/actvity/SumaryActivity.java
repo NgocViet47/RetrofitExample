@@ -15,6 +15,7 @@ import com.example.mypc.retrofitexample.R;
 import com.example.mypc.retrofitexample.adapter.MyFragmentPagerAdapter;
 import com.example.mypc.retrofitexample.fragment.FragmentOrderList;
 import com.example.mypc.retrofitexample.fragment.FragmentSumary;
+import com.example.mypc.retrofitexample.putextra.BundleExtra;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,7 @@ public class SumaryActivity extends BaseActivity implements ViewPager.OnPageChan
     private LinearLayout loButtonSummary,loButtonbtnOrderList,loButtonCheckInTicket;
     private ImageView imgButtonSummary,imgButtonOrder;
     private TextView tvButtonSummary,tvButtonOrder;
+    private int showInId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +45,8 @@ public class SumaryActivity extends BaseActivity implements ViewPager.OnPageChan
 
     private void inittialView() {
 
-       /* Bundle bundle = getIntent().getExtras();
-        String dataShowing = bundle.getString(BundleExtra.PUT_SHOWING);
-        Type type = new TypeToken<ShowingEvent>(){}.getType();
-        showingEvent = GeneralMethods.getGson().fromJson(dataShowing,type);*/
+        Bundle bundle = getIntent().getExtras();
+        showInId = bundle.getInt(BundleExtra.PUT_SHOW_IN_ID);
 
         imgButtonSummary = (ImageView) findViewById(R.id.imgButtonSummaryViewCheck);
         imgButtonOrder = (ImageView) findViewById(R.id.imgButtonOrderViewCheck);
@@ -109,6 +109,7 @@ public class SumaryActivity extends BaseActivity implements ViewPager.OnPageChan
 
     private void loButtonCheckInTicketButton() {
         Intent intent = new Intent(this,ScannerBarcodeActivity.class);
+        intent.putExtra(BundleExtra.PUT_SHOW_IN_ID,showInId);
         startActivity(intent);
     }
 

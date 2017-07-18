@@ -3,10 +3,15 @@ package com.example.mypc.retrofitexample.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
+import io.realm.RealmList;
+import io.realm.RealmObject;
+
 /**
  * Created by MyPC on 6/27/2017.
  */
-public class FormAnswerSheet {
+public class FormAnswerSheet extends RealmObject {
     @SerializedName("ticketId")
     @Expose
     private Integer ticketId;
@@ -18,28 +23,28 @@ public class FormAnswerSheet {
     private Integer ticketTypeId;
     @SerializedName("first_name")
     @Expose
-    private Object firstName;
+    private String firstName;
     @SerializedName("last_name")
     @Expose
-    private Object lastName;
+    private String lastName;
     @SerializedName("email")
     @Expose
-    private Object email;
+    private String email;
     @SerializedName("phone_number")
     @Expose
-    private Object phoneNumber;
+    private String phoneNumber;
     @SerializedName("website")
     @Expose
-    private Object website;
+    private String website;
     @SerializedName("company")
     @Expose
-    private Object company;
+    private String company;
     @SerializedName("job_title")
     @Expose
-    private Object jobTitle;
+    private String jobTitle;
     @SerializedName("form_answers")
     @Expose
-    private Object formAnswers;
+    private RealmList<FormAnswer> formAnswers = null;
 
     public Integer getTicketId() {
         return ticketId;
@@ -65,67 +70,68 @@ public class FormAnswerSheet {
         this.ticketTypeId = ticketTypeId;
     }
 
-    public Object getFirstName() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(Object firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public Object getLastName() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(Object lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public Object getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(Object email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public Object getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Object phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public Object getWebsite() {
+    public String getWebsite() {
         return website;
     }
 
-    public void setWebsite(Object website) {
+    public void setWebsite(String website) {
         this.website = website;
     }
 
-    public Object getCompany() {
+    public String getCompany() {
         return company;
     }
 
-    public void setCompany(Object company) {
+    public void setCompany(String company) {
         this.company = company;
     }
 
-    public Object getJobTitle() {
+    public String getJobTitle() {
         return jobTitle;
     }
 
-    public void setJobTitle(Object jobTitle) {
+    public void setJobTitle(String jobTitle) {
         this.jobTitle = jobTitle;
     }
 
-    public Object getFormAnswers() {
+    public List<FormAnswer> getFormAnswers() {
         return formAnswers;
     }
 
-    public void setFormAnswers(Object formAnswers) {
+    public void setFormAnswers(RealmList<FormAnswer> formAnswers) {
         this.formAnswers = formAnswers;
     }
+
 }

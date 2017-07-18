@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/whiteLight"
-    tools:context="com.example.mypc.retrofitexample.actvity.ShowingActivity">
+    tools:context="com.example.mypc.retrofitexample.actvity.ShowInActivity">
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"

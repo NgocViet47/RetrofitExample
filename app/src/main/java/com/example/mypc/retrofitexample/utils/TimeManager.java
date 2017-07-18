@@ -90,4 +90,18 @@ public class TimeManager {
                 +", "+getDayMothYearByCalendar(getCalendarByZ(timeInput))
                 +", "+ getTimeByhhmmssByISO8601(timeInput);
     }
+    public static String getLastSyncTimeCalendarGetInstance(Calendar calendar){
+        int date = calendar.get(Calendar.DAY_OF_WEEK)-1;
+        String[] days = new String[] { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss aa");
+
+        return days[date]+", "+ getDayMothYearByCalendar(calendar)+", "+simpleDateFormat.format(calendar.getTime());
+    }
+    public static String getStringTimeIso8601ByCalendar(Calendar calendar){
+        Date date = calendar.getTime();
+        String formatted = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSS'Z'").format(date);
+        return formatted;
+    }
+
 }

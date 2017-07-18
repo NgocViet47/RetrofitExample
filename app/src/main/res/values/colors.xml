@@ -18,4 +18,7 @@
 
     <color name="medium_text_enabled">#FF000000</color>
     <color name="medium_text_disabled">#4D000000</color>
+    <color name="status_duple_cate">#F6931E</color>
+    <color name="status_invalid">#E82734</color>
+    <color name="status_valid">#6BAC1C</color>
 </resources>

@@ -1,7 +1,9 @@
 package com.example.mypc.retrofitexample.repository;
 
 import com.example.mypc.retrofitexample.constant.ConstantApi;
+import com.example.mypc.retrofitexample.model.TicketCheck;
 
+import java.util.List;
 import java.util.Map;
 
 import okhttp3.ResponseBody;
@@ -58,6 +60,14 @@ public interface TicketBoxService {
                                       @Field("checked_in_tickets") Map<String, Integer> checkInTicket,
                                       @Field("undo_checked_in_tickets") Map<String, Integer> undoCheckInTicket,
                                       @Field("time_zone") String time_zone);
+
+    @FormUrlEncoded
+    @POST(ConstantApi.SHOWING_SYNC)
+    Call<ResponseBody> postTicketNewCheckIn(@Path("showingId") Integer showingId,
+                                           @HeaderMap Map<String, String> headers,
+                                           @Field("checked_in_tickets[]")List<TicketCheck> checkList,
+                                           @Field("undo_checked_in_tickets") Map<String, Integer> undoCheckInTicket,
+                                           @Field("time_zone") String time_zone);
 
     @GET(ConstantApi.TICKET_STATUS)
     Call<ResponseBody> getStatusTicketbox(@HeaderMap Map<String, String> headers);

@@ -13,8 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.mypc.retrofitexample.R;
-import com.example.mypc.retrofitexample.actvity.ScannerBarcodeActivity;
-import com.example.mypc.retrofitexample.actvity.ShowingActivity;
+import com.example.mypc.retrofitexample.actvity.ShowInActivity;
+import com.example.mypc.retrofitexample.constant.ConstantStatusShowIn;
 import com.example.mypc.retrofitexample.filter.CustomFilter;
 import com.example.mypc.retrofitexample.model.Events;
 import com.example.mypc.retrofitexample.putextra.BundleExtra;
@@ -107,15 +107,16 @@ public class RecyclerviewEventAdapter extends RecyclerView.Adapter<RecyclerviewE
         }
 
         private void loButtonCheckInButton() {
-            Intent intent =new Intent(mContext, ScannerBarcodeActivity.class);
+            Intent intent =new Intent(mContext, ShowInActivity.class);
+            intent.putExtra(BundleExtra.PUT_EVENT_ID,contactInfoList.get(getAdapterPosition()).getEventId());
+            intent.putExtra(BundleExtra.PUT_EVENT, ConstantStatusShowIn.IS_CHECK_IN);
             mContext.startActivity(intent);
         }
 
         private void loButtonSumaryEventButton() {
-            Intent intent = new Intent(mContext, ShowingActivity.class);
-            /*String dateIntent = GeneralMethods.getGson().toJson(contactInfoList.get(getAdapterPosition()).getShowings());
-            intent.putExtra(BundleExtra.PUT_SHOWING,dateIntent);*/
-            intent.putExtra(BundleExtra.PUT_EVENTID,contactInfoList.get(getAdapterPosition()).getEventId());
+            Intent intent = new Intent(mContext, ShowInActivity.class);
+            intent.putExtra(BundleExtra.PUT_EVENT_ID,contactInfoList.get(getAdapterPosition()).getEventId());
+            intent.putExtra(BundleExtra.PUT_EVENT, ConstantStatusShowIn.IS_SUMMARY);
             mContext.startActivity(intent);
         }
     }

@@ -11,12 +11,13 @@ import android.view.ViewGroup;
 
 import com.example.mypc.retrofitexample.R;
 import com.example.mypc.retrofitexample.adapter.RecyclerviewOrderAdapter;
+import com.example.mypc.retrofitexample.constant.ConstantCheckIn;
 import com.example.mypc.retrofitexample.model.Order;
 import com.example.mypc.retrofitexample.model.OrderAndNumberTicket;
-import com.example.mypc.retrofitexample.model.responseResultModel.ResultResponse;
 import com.example.mypc.retrofitexample.model.ShowingEvent;
 import com.example.mypc.retrofitexample.model.Ticket;
 import com.example.mypc.retrofitexample.model.responseResultModel.ResponseOrderShowInData;
+import com.example.mypc.retrofitexample.model.responseResultModel.ResultResponse;
 import com.example.mypc.retrofitexample.putextra.BundleExtra;
 import com.example.mypc.retrofitexample.repository.CallBackData;
 import com.example.mypc.retrofitexample.repository.RepositoryService;
@@ -66,17 +67,16 @@ public class FragmentCheckIn extends Fragment {
                 List<Ticket> ticketList = responseOrderShowInData.getCurrentShowing().getTickets();
                 List<OrderAndNumberTicket> orderAndNumberTicketList = new ArrayList<>();
                 for (int i = 0; i < orderList.size(); i++) {
-                    int number = 0;
+                    int numberTicket = 0;
                     for (int j = 0; j < ticketList.size(); j++) {
-                        if (orderList.get(i).getOrderId().equals(ticketList.get(j).getOrderId())) {
-                            if (ticketList.get(j).getCheckedInTime().equals(BundleExtra.NOT_CHECKIN)) {
-
-                            } else
-                                number++;
+                        if (ticketList.get(j).getOrderId().equals(orderList.get(i).getOrderId())) {
+                            if (ticketList.get(j).getStatus().equals(ConstantCheckIn.CHECK_IN)) {
+                                numberTicket++;
+                                }
                         }
                     }
-                    if (number > 0) {
-                        orderAndNumberTicketList.add(new OrderAndNumberTicket(orderList.get(i), number));
+                    if (numberTicket > 0) {
+                        orderAndNumberTicketList.add(new OrderAndNumberTicket(orderList.get(i), numberTicket));
                     }
                 }
                 final RecyclerviewOrderAdapter adapter = new RecyclerviewOrderAdapter(orderAndNumberTicketList, getContext());

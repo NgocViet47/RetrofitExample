@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.example.mypc.retrofitexample.R;
 import com.example.mypc.retrofitexample.actvity.TicketSoldActivity;
 import com.example.mypc.retrofitexample.circleprogress.DonutProgress;
+import com.example.mypc.retrofitexample.constant.ConstantCheckIn;
 import com.example.mypc.retrofitexample.model.responseResultModel.ResultResponse;
 import com.example.mypc.retrofitexample.model.ShowingEvent;
 import com.example.mypc.retrofitexample.model.Ticket;
@@ -114,7 +115,7 @@ public class FragmentSumary extends Fragment implements View.OnClickListener {
                             int number = 0;
                             for (int j = 0; j < ticketList.size(); j++) {
                                 if (listTicketSale.get(i).getTicketTypeId().equals(ticketList.get(j).getTicketTypeId())) {
-                                    if (ticketList.get(j).getCheckedInTime().equals(BundleExtra.NOT_CHECKIN)) {
+                                    if (ticketList.get(j).getStatus().equals(ConstantCheckIn.CHECK_IN)) {
 
                                     } else
                                         number++;

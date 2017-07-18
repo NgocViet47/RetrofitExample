@@ -12,11 +12,15 @@ import android.widget.TextView;
 
 import com.example.mypc.retrofitexample.R;
 import com.example.mypc.retrofitexample.model.User;
+import com.example.mypc.retrofitexample.model.responseResultModel.ResultResponse;
+import com.example.mypc.retrofitexample.realm.RealmStatus;
 import com.example.mypc.retrofitexample.repository.CallBackData;
 import com.example.mypc.retrofitexample.repository.RepositoryService;
 import com.example.mypc.retrofitexample.repository.TicketboxRepository;
 import com.example.mypc.retrofitexample.sharedpreference.SharedPreference;
 import com.example.mypc.retrofitexample.utils.TimeManager;
+
+import java.util.List;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -74,8 +78,27 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             @Override
             public void onResponseData(User user) {
                 Log.e("Log", "Login Finish");
+                if (RealmStatus.getStatusTicket(getApplicationContext()) != null) {
+                    RealmStatus.clearAllStatusTicket(getApplicationContext());
+                }
+                addRealmStatusTicket();
                 saveStartTime(user);
                 loadActivityStatus();
+            }
+
+            @Override
+            public void onFailed(String message) {
+
+            }
+        });
+    }
+
+    private void addRealmStatusTicket() {
+        TicketboxRepository repository = new RepositoryService();
+        repository.getStatusTicketBox(this, new CallBackData<ResultResponse<List<Integer>>>() {
+            @Override
+            public void onResponseData(ResultResponse<List<Integer>> listResultResponse) {
+
             }
 
             @Override

@@ -8,6 +8,7 @@ import com.example.mypc.retrofitexample.model.StatusTicket;
 import java.util.List;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 import static com.example.mypc.retrofitexample.realm.BaseRealmUtils.getRealmConfig;
 
@@ -30,6 +31,13 @@ public class RealmStatus {
     public static List<StatusTicket> getStatusTicket(Context context) {
         realm = Realm.getInstance(getRealmConfig(context));
         return realm.where(StatusTicket.class).findAll();
+    }
+
+    public static void clearAllStatusTicket(Context context){
+        RealmResults<StatusTicket> results = realm.where(StatusTicket.class).findAll();
+        realm.beginTransaction();
+        results.deleteAllFromRealm();
+        realm.commitTransaction();
     }
 
     public static void createStatusOrder(Context context, StatusOrder statusOrder) {

@@ -3,11 +3,13 @@ package com.example.mypc.retrofitexample.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import io.realm.RealmObject;
+
 /**
  * Created by MyPC on 6/27/2017.
  */
 
-public class Ticket {
+public class Ticket extends RealmObject {
     @SerializedName("ticket_id")
     @Expose
     private Integer ticketId;
@@ -43,16 +45,26 @@ public class Ticket {
     private String checkedInTime;
     @SerializedName("seat_number")
     @Expose
-    private Object seatNumber;
+    private String seatNumber;
     @SerializedName("seat_section")
     @Expose
-    private Object seatSection;
+    private String seatSection;
     @SerializedName("seat_row")
     @Expose
-    private Object seatRow;
+    private String seatRow;
     @SerializedName("form_answer_sheet")
     @Expose
     private FormAnswerSheet formAnswerSheet;
+
+    private boolean isChecked = true;
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
 
     public Integer getTicketId() {
         return ticketId;
@@ -142,27 +154,27 @@ public class Ticket {
         this.checkedInTime = checkedInTime;
     }
 
-    public Object getSeatNumber() {
+    public String getSeatNumber() {
         return seatNumber;
     }
 
-    public void setSeatNumber(Object seatNumber) {
+    public void setSeatNumber(String seatNumber) {
         this.seatNumber = seatNumber;
     }
 
-    public Object getSeatSection() {
+    public String getSeatSection() {
         return seatSection;
     }
 
-    public void setSeatSection(Object seatSection) {
+    public void setSeatSection(String seatSection) {
         this.seatSection = seatSection;
     }
 
-    public Object getSeatRow() {
+    public String getSeatRow() {
         return seatRow;
     }
 
-    public void setSeatRow(Object seatRow) {
+    public void setSeatRow(String seatRow) {
         this.seatRow = seatRow;
     }
 

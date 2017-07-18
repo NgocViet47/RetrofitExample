@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.example.mypc.retrofitexample.R;
 import com.example.mypc.retrofitexample.adapter.RecyclerviewOrderAdapter;
+import com.example.mypc.retrofitexample.constant.ConstantCheckIn;
 import com.example.mypc.retrofitexample.model.Order;
 import com.example.mypc.retrofitexample.model.OrderAndNumberTicket;
 import com.example.mypc.retrofitexample.model.responseResultModel.ResultResponse;
@@ -65,17 +66,16 @@ public class FragmentNotCheckIn extends Fragment {
 
                 List<Order> orderList = responseOrderShowInData.getCurrentShowing().getOrders();
                 List<Ticket> ticketList = responseOrderShowInData.getCurrentShowing().getTickets();
-                List<OrderAndNumberTicket> orderAndNumberTicketList= new ArrayList<>();
-                for(int i = 0;i<orderList.size();i++){
+                List<OrderAndNumberTicket> orderAndNumberTicketList = new ArrayList<>();
+                for (int i = 0; i < orderList.size(); i++) {
                     int number = 0;
-                    for(int j=0;j<ticketList.size();j++){
-                        if(orderList.get(i).getOrderId().equals(ticketList.get(j).getOrderId())
-                                &&ticketList.get(j).getCheckedInTime().equals(BundleExtra.NOT_CHECKIN))
-                        {
+                    for (int j = 0; j < ticketList.size(); j++) {
+                        if (orderList.get(i).getOrderId().equals(ticketList.get(j).getOrderId())
+                                && ticketList.get(j).getStatus() != ConstantCheckIn.CHECK_IN) {
                             number++;
                         }
                     }
-                    if(number>0) {
+                    if (number > 0) {
                         orderAndNumberTicketList.add(new OrderAndNumberTicket(orderList.get(i), number));
                     }
                 }

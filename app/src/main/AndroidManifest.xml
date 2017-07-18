@@ -14,7 +14,6 @@
         <meta-data
             android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="barcode" />
-
         <activity
             android:name=".actvity.FirstActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -24,16 +23,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".service.ServiceUpdateTicket"
+            android:enabled="true"
+            android:exported="true" />
+
         <activity android:name=".actvity.StatusTicketboxActivity" />
         <activity android:name=".actvity.MainActivity" />
         <activity android:name=".actvity.SetCountryActivity" />
-        <activity android:name=".actvity.EventActivity" />
+        <activity android:name=".actvity.SumaryActivity" />
         <activity android:name=".actvity.SearchActivity" />
         <activity android:name=".actvity.ForgotActivity" />
-        <activity android:name=".actvity.ShowingActivity" />
-        <activity android:name=".actvity.SumaryActivity" />
+        <activity android:name=".actvity.ShowInActivity" />
+        <activity android:name=".actvity.EventActivity" />
         <activity android:name=".actvity.TicketSoldActivity" />
-        <activity android:name=".actvity.CheckInActivity" />
         <activity android:name=".actvity.ScannerBarcodeActivity"></activity>
     </application>
 

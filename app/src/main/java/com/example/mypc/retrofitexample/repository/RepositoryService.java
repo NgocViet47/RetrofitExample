@@ -6,6 +6,7 @@ import android.util.Log;
 import com.example.mypc.retrofitexample.R;
 import com.example.mypc.retrofitexample.constant.ClientApi;
 import com.example.mypc.retrofitexample.constant.ConstantUtils;
+import com.example.mypc.retrofitexample.model.TicketCheck;
 import com.example.mypc.retrofitexample.model.responseResultModel.ResultResponse;
 import com.example.mypc.retrofitexample.model.ShowingEvent;
 import com.example.mypc.retrofitexample.model.StatusOrder;
@@ -360,6 +361,49 @@ public class RepositoryService implements TicketboxRepository {
         ClientApi clientApi = new ClientApi();
         Call<ResponseBody> callGetReportByEventIdAndShowingId = clientApi.getTicketBoxService().getShowInOrder(showingId,getHeaders(context),getTicketId(),getTicketId(),timeZone);
         callGetReportByEventIdAndShowingId.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response != null && response.body() != null) {
+
+                    try {
+                        String result = response.body().string();
+                        Log.e("result", result);
+                        Type type = new TypeToken<ResultResponse<ResponseOrderShowInData>>() {
+                        }.getType();
+                        ResultResponse<ResponseOrderShowInData> resultResponse = GeneralMethods.getGson().fromJson(result, type);
+                        if (resultResponse != null) {
+                            if (resultResponse.isSuccess()) {
+                                callBackData.onResponseData(resultResponse);
+                            } else {
+                                callBackData.onFailed(resultResponse.getMessage());
+                            }
+                        } else {
+                            callBackData.onFailed(context.getString(R.string.msg_network_error));
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    callBackData.onFailed(context.getString(R.string.msg_network_error));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                if (t instanceof UnknownHostException) {
+                    callBackData.onFailed(context.getString(R.string.msg_network_error));
+                } else {
+                    callBackData.onFailed(context.getString(R.string.msg_network_error));
+                }
+            }
+        });
+    }
+
+    @Override
+    public void postTicketCheckIn(final Context context, Integer showingId, String timeZone, List<TicketCheck> ticketCheckList, final CallBackData<ResultResponse<ResponseOrderShowInData>> callBackData) {
+        ClientApi clientApi = new ClientApi();
+        Call<ResponseBody> postTicketCheckIn = clientApi.getTicketBoxService().postTicketNewCheckIn(showingId,getHeaders(context),ticketCheckList,getTicketId(),timeZone);
+        postTicketCheckIn.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response != null && response.body() != null) {

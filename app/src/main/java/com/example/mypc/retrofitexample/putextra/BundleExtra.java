@@ -5,8 +5,11 @@ package com.example.mypc.retrofitexample.putextra;
  */
 
 public class BundleExtra {
-    public static String PUT_SHOWING = "putShowing";
-    public static String PUT_EVENTID = "putEventId";
+    public static String PUT_SHOWING = "putShowIn";
+    public static String PUT_SHOW_IN_ID = "putShowInID";
+    public static String PUT_EVENT_ID = "putEventId";
     public static String PUT_REPORT = "putReport";
-    public static String NOT_CHECKIN = "0001-01-01T00:00:00";
+    public static String PUT_EVENT = "putEvent";
+
+    public static String PUT_STOP_SERVICE = "PUT_STOP_SERVICE";
 }

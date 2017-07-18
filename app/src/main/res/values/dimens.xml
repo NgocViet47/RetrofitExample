@@ -2,7 +2,7 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="image_country_item_list">45.00dp</dimen>
+    <dimen name="image_country_item_list">80.00dp</dimen>
     <dimen name="textview_country_item_list">20.00sp</dimen>
     <dimen name="layout_country_item_list">40pt</dimen>
     <dimen name="textview_country">28.00sp</dimen>

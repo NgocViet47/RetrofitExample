@@ -1,5 +1,6 @@
 package com.example.mypc.retrofitexample.actvity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -15,16 +16,18 @@ import com.example.mypc.retrofitexample.putextra.BundleExtra;
 import com.example.mypc.retrofitexample.repository.CallBackData;
 import com.example.mypc.retrofitexample.repository.RepositoryService;
 import com.example.mypc.retrofitexample.repository.TicketboxRepository;
+import com.example.mypc.retrofitexample.service.ServiceUpdateTicket;
 import com.example.mypc.retrofitexample.sharedpreference.SharedPreference;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShowingActivity extends BaseActivity {
+public class ShowInActivity extends BaseActivity {
 
     private RecyclerView rvListShowing;
     private TextView tvTimeZone;
     private List<ShowingEvent> showingList = new ArrayList<>();
+    private String isStatusShowIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,13 @@ public class ShowingActivity extends BaseActivity {
         initialView();
     }
 
+    @Override
+    protected void onDestroy() {
+        Intent intent = new Intent(this, ServiceUpdateTicket.class);
+        stopService(intent);
+        super.onDestroy();
+    }
+
     private void initialView() {
 
         tvTimeZone = (TextView) findViewById(R.id.tvTimeZone);
@@ -41,13 +51,14 @@ public class ShowingActivity extends BaseActivity {
                 " time "+"(GMT "+SharedPreference.getString(SharedPreference.KEY_TIME_ZONE,this)+")");
 
         Bundle bundle = getIntent().getExtras();
-        int eventId = bundle.getInt(BundleExtra.PUT_EVENTID);
+        int eventId = bundle.getInt(BundleExtra.PUT_EVENT_ID);
+        isStatusShowIn = bundle.getString(BundleExtra.PUT_EVENT);
 
         rvListShowing = (RecyclerView) findViewById(R.id.rvListShowing);
         final StaggeredGridLayoutManager linearLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
         rvListShowing.setLayoutManager(linearLayoutManager);
 
-        final RecyclerviewShowingAdapter adapter = new RecyclerviewShowingAdapter(showingList,this);
+        final RecyclerviewShowingAdapter adapter = new RecyclerviewShowingAdapter(showingList,isStatusShowIn,this);
         rvListShowing.setAdapter(adapter);
 
         TicketboxRepository ticketboxRepository = new RepositoryService();
@@ -78,6 +89,7 @@ public class ShowingActivity extends BaseActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

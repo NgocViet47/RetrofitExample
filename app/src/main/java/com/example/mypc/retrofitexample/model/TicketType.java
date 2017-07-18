@@ -3,11 +3,13 @@ package com.example.mypc.retrofitexample.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import io.realm.RealmObject;
+
 /**
  * Created by MyPC on 6/27/2017.
  */
 
-public class TicketType {
+public class TicketType extends RealmObject {
     @SerializedName("ticket_type_id")
     @Expose
     private Integer ticketTypeId;
@@ -25,7 +27,7 @@ public class TicketType {
     private Integer displayOrder;
     @SerializedName("color")
     @Expose
-    private Object color;
+    private String color;
     @SerializedName("status")
     @Expose
     private Integer status;
@@ -70,11 +72,11 @@ public class TicketType {
         this.displayOrder = displayOrder;
     }
 
-    public Object getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(Object color) {
+    public void setColor(String color) {
         this.color = color;
     }
 

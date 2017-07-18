@@ -5,11 +5,14 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+import io.realm.RealmList;
+import io.realm.RealmObject;
+
 /**
  * Created by MyPC on 6/27/2017.
  */
 
-public class CurrentShowing {
+public class CurrentShowing extends RealmObject{
     @SerializedName("showing_id")
     @Expose
     private Integer showingId;
@@ -21,13 +24,13 @@ public class CurrentShowing {
     private Integer adminRoleId;
     @SerializedName("tickets")
     @Expose
-    private List<Ticket> tickets = null;
+    private RealmList<Ticket> tickets = null;
     @SerializedName("ticket_types")
     @Expose
-    private List<TicketType> ticketTypes = null;
+    private RealmList<TicketType> ticketTypes = null;
     @SerializedName("orders")
     @Expose
-    private List<Order> orders = null;
+    private RealmList<Order> orders = null;
 
     public Integer getShowingId() {
         return showingId;
@@ -57,7 +60,7 @@ public class CurrentShowing {
         return tickets;
     }
 
-    public void setTickets(List<Ticket> tickets) {
+    public void setTickets(RealmList<Ticket> tickets) {
         this.tickets = tickets;
     }
 
@@ -65,7 +68,7 @@ public class CurrentShowing {
         return ticketTypes;
     }
 
-    public void setTicketTypes(List<TicketType> ticketTypes) {
+    public void setTicketTypes(RealmList<TicketType> ticketTypes) {
         this.ticketTypes = ticketTypes;
     }
 
@@ -73,7 +76,7 @@ public class CurrentShowing {
         return orders;
     }
 
-    public void setOrders(List<Order> orders) {
+    public void setOrders(RealmList<Order> orders) {
         this.orders = orders;
     }
 }
